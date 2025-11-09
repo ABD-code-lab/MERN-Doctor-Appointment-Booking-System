@@ -6,7 +6,6 @@ const { getDashboard, getMe } = require("../controllers/dashboardController");
 // Role-based dashboard
 router.get("/", protect(), getDashboard);
 
-// Get current logged-in user info
-router.get("/me", protect(), getMe);  // ✅ This is required for frontend dashboards
+router.get("/me", protect(), getMe);  
 
 module.exports = router;

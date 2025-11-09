@@ -23,7 +23,6 @@ exports.getDashboard = (req, res) => {
   }
 };
 
-// Get logged-in user info for dashboard
 exports.getMe = (req, res) => {
   try {
     const { name, role } = req.user;
