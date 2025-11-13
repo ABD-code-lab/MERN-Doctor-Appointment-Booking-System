@@ -8,20 +8,33 @@ const {
   deleteService
 } = require("../controllers/doctorController");
 const { protect } = require("../middleware/authMiddleware");
-const Doctor = require("../models/Doctor"); 
+const User = require("../models/User")
 
 const router = express.Router();
 
+// router.get("/all", async (req, res) => {
+//   try {
+//     // const doctors = await Doctor.find({}, "name specialization"); 
+//     // we only send name & specialization to keep data 
+//      const doctors = await Doctor.find(); // ← no filters
+//     res.status(200).json(doctors);
+//   } catch (error) {
+//     console.error("Error fetching doctors:", error);
+//     res.status(500).json({ message: "Failed to fetch doctors" });
+//   }
+// });
+
+
 router.get("/all", async (req, res) => {
   try {
-    const doctors = await Doctor.find({}, "name specialization"); 
-    // we only send name & specialization to keep data light
+    const doctors = await User.find({ role: "doctor" }).select("name email role specialization");
     res.status(200).json(doctors);
   } catch (error) {
     console.error("Error fetching doctors:", error);
     res.status(500).json({ message: "Failed to fetch doctors" });
   }
 });
+
 
 
 // Doctor profile routes
