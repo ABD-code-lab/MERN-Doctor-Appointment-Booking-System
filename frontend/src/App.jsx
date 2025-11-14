@@ -14,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         {/* Public Routes */}
+          <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
